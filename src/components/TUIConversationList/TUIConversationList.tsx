@@ -90,31 +90,31 @@ export function UnMemoTUIConversationList<T extends Props>(props: T):React.React
   return (
     <div className={`tui-conversation ${customClasses || ''}`} ref={conversationListRef}>
       {
-        conversationCreated
-          ? (
-            <ConversationCreate
-              conversationList={conversationList}
-              setConversationCreated={setConversationCreated}
-            />
-          )
-          : (
-            <>
-              <Profile profile={myProfile} handleAvatar={() => { setTUIProfileShow(true); }} />
-              <div className="tui-conversation-header">
-                <ConversationSearchInput
-                  value={searchValue}
-                  clearable
-                  onChange={handleSearchValueChange}
-                />
-                <div className="tui-conversation-create-icon">
-                  <Icon
-                    onClick={handleConversationCreate}
-                    type={IconTypes.CREATE}
-                    height={24}
-                    width={24}
-                  />
-                </div>
-              </div>
+        // conversationCreated
+        //   ? (
+        //     <ConversationCreate
+        //       conversationList={conversationList}
+        //       setConversationCreated={setConversationCreated}
+        //     />
+        //   )
+        //   : (
+        //     <>
+        //       <Profile profile={myProfile} handleAvatar={() => { setTUIProfileShow(true); }} />
+        //       <div className="tui-conversation-header">
+        //         <ConversationSearchInput
+        //           value={searchValue}
+        //           clearable
+        //           onChange={handleSearchValueChange}
+        //         />
+        //         <div className="tui-conversation-create-icon">
+        //           <Icon
+        //             onClick={handleConversationCreate}
+        //             type={IconTypes.CREATE}
+        //             height={24}
+        //             width={24}
+        //           />
+        //         </div>
+        //       </div>
               <Container setConversationList={setConversationList}>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {conversationList.length === 0
@@ -145,8 +145,8 @@ export function UnMemoTUIConversationList<T extends Props>(props: T):React.React
                       );
                     })}
               </Container>
-            </>
-          )
+            // </>
+          // )
       }
     </div>
   );
