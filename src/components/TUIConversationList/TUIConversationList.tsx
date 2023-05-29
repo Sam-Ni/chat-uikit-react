@@ -124,14 +124,14 @@ export function UnMemoTUIConversationList<T extends Props>(props: T):React.React
                       <div className="no-result-message">No conversation</div>
                     </div>
                   )
-                  : searchValue
-                    ? (
-                      <ConversationSearchResult
-                        Preview={Preview}
-                        searchValue={searchValue}
-                        result={searchResult}
-                      />
-                    )
+                  // : searchValue
+                  //   ? (
+                  //     <ConversationSearchResult
+                  //       Preview={Preview}
+                  //       searchValue={searchValue}
+                  //       result={searchResult}
+                  //     />
+                  //   )
                     : conversationList.map((item) => {
                       const previewProps = {
                         activeConversation: conversation,
