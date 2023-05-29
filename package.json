@@ -22,7 +22,7 @@
   "homepage": "https://www.tencentcloud.com/document/product/1047/45912",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TencentCloud/chat-uikit-react.git"
+    "url": "https://github.com/Sam-Ni/chat-uikit-react.git"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
