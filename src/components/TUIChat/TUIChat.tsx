@@ -55,6 +55,7 @@ interface TUIChatProps {
   TUIMessageInputConfig?: TUIMessageInputBasicProps,
   TUIMessageListConfig?: MessageListProps,
   [propName: string]: any,
+  // onlyMessageList: boolean,
 }
 
 interface TUIChatInnerProps extends TUIChatProps {
@@ -108,6 +109,7 @@ function TUIChatInner <T extends TUIChatInnerProps>(
     cloudCustomData,
     TUIMessageInputConfig,
     TUIMessageListConfig,
+    onlyMessageList = false,
   } = props;
 
   const [state, dispatch] = useReducer<ChatStateReducer>(
@@ -299,6 +301,7 @@ function TUIChatInner <T extends TUIChatInnerProps>(
         <TUIChatActionProvider value={chatActionContextValue}>
           <ComponentProvider value={componentContextValue}>
             {children || (
+              onlyMessageList? <> <TUIMessageList /> </>:
             <>
               <TUIChatHeaderElement />
               <TUIMessageList />
