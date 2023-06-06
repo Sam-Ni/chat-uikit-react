@@ -91,27 +91,65 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
   return (
     <div className={`tui-conversation ${customClasses || ''}`} ref={conversationListRef}>
       {
-        <Container setConversationList={setConversationList}>
-          {conversationList.length === 0
-            ? (
-              <div className="no-result">
-                <Icon className="no-result-icon" type={IconTypes.EFFORT} width={42} height={42}/>
-                <div className="no-result-message">No conversation</div>
+        conversationCreated
+          ? (
+            <ConversationCreate
+              conversationList={conversationList}
+              setConversationCreated={setConversationCreated}
+            />
+          )
+          : (
+            <>
+              <Profile profile={myProfile} handleAvatar={() => {
+                setTUIProfileShow(true);
+              }}/>
+              <div className="tui-conversation-header">
+                <ConversationSearchInput
+                  value={searchValue}
+                  clearable
+                  onChange={handleSearchValueChange}
+                />
+                <div className="tui-conversation-create-icon">
+                  <Icon
+                    onClick={handleConversationCreate}
+                    type={IconTypes.CREATE}
+                    height={24}
+                    width={24}
+                  />
+                </div>
               </div>
-            )
-            : conversationList.map((item) => {
-              const previewProps = {
-                activeConversation: conversation,
-                conversation: item,
-                setActiveConversation,
-                Preview,
-                conversationUpdateCount,
-              };
-              return (
-                <ConversationPreview key={item.conversationID} {...previewProps} />
-              );
-            })}
-        </Container>
+              <Container setConversationList={setConversationList}>
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {conversationList.length === 0
+                  ? (
+                    <div className="no-result">
+                      <Icon className="no-result-icon" type={IconTypes.EFFORT} width={42} height={42}/>
+                      <div className="no-result-message">No conversation</div>
+                    </div>
+                  )
+                  : searchValue
+                    ? (
+                      <ConversationSearchResult
+                        Preview={Preview}
+                        searchValue={searchValue}
+                        result={searchResult}
+                      />
+                    )
+                    : conversationList.map((item) => {
+                      const previewProps = {
+                        activeConversation: conversation,
+                        conversation: item,
+                        setActiveConversation,
+                        Preview,
+                        conversationUpdateCount,
+                      };
+                      return (
+                        <ConversationPreview key={item.conversationID} {...previewProps} />
+                      );
+                    })}
+              </Container>
+            </>
+          )
       }
     </div>
   );
