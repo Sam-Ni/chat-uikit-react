@@ -11,10 +11,10 @@ interface Props {
     Container?: React.ComponentType<ConversationListContainerProps>;
     onConversationListUpdated?: (setConversationList: React.Dispatch<React.SetStateAction<Array<Conversation>>>, event: () => void) => void;
     filterConversation?: (conversationList: Array<Conversation>) => Array<Conversation>;
-    showSelf: boolean;
-    showSearch: boolean;
-    onlyGroupConversation: boolean;
-    onlyC2CConversation: boolean;
+    showSelf?: boolean;
+    showSearch?: boolean;
+    onlyGroupConversation?: boolean;
+    onlyC2CConversation?: boolean;
 }
 declare function UnMemoTUIConversationList<T extends Props>(props: T): React.ReactElement;
 declare const TUIConversationList: React.MemoExoticComponent<typeof UnMemoTUIConversationList>;

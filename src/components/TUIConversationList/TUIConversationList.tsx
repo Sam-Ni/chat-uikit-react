@@ -27,10 +27,10 @@ interface Props {
     event: () => void
   ) => void,
   filterConversation?: (conversationList: Array<Conversation>) => Array<Conversation>,
-  showSelf: boolean,
-  showSearch: boolean,
-  onlyGroupConversation: boolean ,
-  onlyC2CConversation: boolean,
+  showSelf?: boolean,
+  showSearch?: boolean,
+  onlyGroupConversation?: boolean ,
+  onlyC2CConversation?: boolean,
 }
 
 export function UnMemoTUIConversationList<T extends Props>(props: T): React.ReactElement {
