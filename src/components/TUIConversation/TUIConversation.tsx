@@ -36,7 +36,12 @@ export function UnMemoizedTUIConversation<T extends TUIConversationProps>(
     <TUIConversationProvider value={TUIConversationValue}>
       {children || (
         <>
-          <TUIConversationList />
+          <TUIConversationList
+            showSelf={true}
+            showSearch={true}
+            onlyGroupConversation={false}
+            onlyC2CConversation={false}
+          />
           <TUIProfile />
         </>
       )}

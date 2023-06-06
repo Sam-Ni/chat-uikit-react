@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Conversation} from 'tim-js-sdk';
+import TIM, {Conversation} from 'tim-js-sdk';
 import {useTUIKitContext} from '../../context';
 import useConversationList from './hooks/useConversationList';
 import './index.scss';
@@ -27,6 +27,10 @@ interface Props {
     event: () => void
   ) => void,
   filterConversation?: (conversationList: Array<Conversation>) => Array<Conversation>,
+  showSelf: boolean,
+  showSearch: boolean,
+  onlyGroupConversation: boolean ,
+  onlyC2CConversation: boolean,
 }
 
 export function UnMemoTUIConversationList<T extends Props>(props: T): React.ReactElement {
@@ -35,6 +39,10 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
     Container = ConversationListContainer,
     onConversationListUpdated,
     filterConversation: propsFilterConversation,
+    showSelf = true,
+    showSearch = true,
+    onlyGroupConversation = false,
+    onlyC2CConversation = false,
   } = props;
   const {
     tim, customClasses, conversation, setActiveConversation, setTUIProfileShow,
@@ -100,9 +108,12 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
           )
           : (
             <>
+              {showSelf &&
               <Profile profile={myProfile} handleAvatar={() => {
                 setTUIProfileShow(true);
               }}/>
+              }
+              {showSearch &&
               <div className="tui-conversation-header">
                 <ConversationSearchInput
                   value={searchValue}
@@ -118,6 +129,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                   />
                 </div>
               </div>
+              }
               <Container setConversationList={setConversationList}>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {conversationList.length === 0
@@ -135,6 +147,36 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                         result={searchResult}
                       />
                     )
+                    : onlyGroupConversation
+                      ? conversationList.filter(item =>
+                        item.type === TIM.TYPES.GRP_PUBLIC
+                      ).map(item => {
+                        const previewProps = {
+                          activeConversation: conversation,
+                          conversation: item,
+                          setActiveConversation,
+                          Preview,
+                          conversationUpdateCount,
+                        };
+                        return (
+                          <ConversationPreview key={item.conversationID} {...previewProps} />
+                        );
+                      })
+                      : onlyC2CConversation
+                        ? conversationList.filter(item =>
+                          item.type === TIM.TYPES.CONV_C2C
+                        ).map(item => {
+                          const previewProps = {
+                            activeConversation: conversation,
+                            conversation: item,
+                            setActiveConversation,
+                            Preview,
+                            conversationUpdateCount,
+                          };
+                          return (
+                            <ConversationPreview key={item.conversationID} {...previewProps} />
+                          );
+                        })
                     : conversationList.map((item) => {
                       const previewProps = {
                         activeConversation: conversation,
