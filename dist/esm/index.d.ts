@@ -12,6 +12,7 @@ export { ComponentContext, ComponentContextValue, ComponentProvider, UnknowPorps
 export { TUIMessageInputContext, TUIMessageInputContextProvider, TUIMessageInputContextValue, useTUIMessageInputContext } from './context/TUIMessageInputContext.js';
 export { ConversationPreview, ConversationPreviewProps, ConversationPreviewUIComponentProps } from './components/ConversationPreview/ConversationPreview.js';
 export { ConversationPreviewContent, unMemoConversationPreviewContent } from './components/ConversationPreview/ConversationPreviewContent.js';
+export { MyConversationPreviewContent, unMemoMyConversationPreviewContent } from './components/ConversationPreview/MyConversationPreviewContent.js';
 export { TUIChatHeader } from './components/TUIChatHeader/TUIChatHeader.js';
 export { TUIChatHeaderBasicProps, TUIChatHeaderDefault, TUIChatHeaderDefaultProps } from './components/TUIChatHeader/TUIChatHeaderDefault.js';
 export { MessageListProps, TUIMessageList } from './components/TUIMessageList/TUIMessageList.js';
