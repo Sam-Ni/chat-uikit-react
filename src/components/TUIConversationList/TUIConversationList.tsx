@@ -149,7 +149,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                     )
                     : onlyGroupConversation
                       ? conversationList.filter(item =>
-                        item.type === TIM.TYPES.GRP_PUBLIC
+                        item.type === TIM.TYPES.CONV_GROUP
                       ).map(item => {
                         const previewProps = {
                           activeConversation: conversation,
