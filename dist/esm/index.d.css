@@ -1014,7 +1014,7 @@ ul li {
   flex: 1;
   text-align: left;
   max-width: 58%;
-  min-width: 58%;
+  min-width: 0;
   margin-left: 10px;
 }
 .conversation-preview-container .content .title {
