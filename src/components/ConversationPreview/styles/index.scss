@@ -16,7 +16,7 @@ $font-color: #7A7A7A;
   padding: 0 20px;
 
   .content {
-    flex: 1;
+    //flex: 1;
     text-align: left;
     max-width: 58%;
     min-width: 0;
@@ -43,6 +43,10 @@ $font-color: #7A7A7A;
       line-height: 14px;
       padding: 1px 0;
     }
+  }
+
+  .unread {
+    margin-left: 10px;
   }
 
   .external {

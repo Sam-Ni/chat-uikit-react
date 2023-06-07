@@ -80,7 +80,7 @@ export function unMemoMyConversationPreviewContent<T extends ConversationPreview
         {/*  {displayMessage}*/}
         {/*</div>*/}
       </div>
-      <div>
+      <div className={"unread"}>
         {unread ? (<div className="unread">{unread <= 99 ? unread : '99+'}</div>) : (<div className="unread" />)}
       </div>
       {/*<div className="external">*/}
