@@ -80,8 +80,11 @@ export function unMemoMyConversationPreviewContent<T extends ConversationPreview
         {/*  {displayMessage}*/}
         {/*</div>*/}
       </div>
-      <div className="external">
+      <div>
         {unread ? (<div className="unread">{unread <= 99 ? unread : '99+'}</div>) : (<div className="unread" />)}
+      </div>
+      {/*<div className="external">*/}
+      {/*  {unread ? (<div className="unread">{unread <= 99 ? unread : '99+'}</div>) : (<div className="unread" />)}*/}
         {/*{!isHover*/}
         {/*  ? (*/}
         {/*    <div className="time">*/}
@@ -127,7 +130,7 @@ export function unMemoMyConversationPreviewContent<T extends ConversationPreview
         {/*      />*/}
         {/*    </div>*/}
         {/*  )}*/}
-      </div>
+      {/*</div>*/}
     </button>
   );
 }
