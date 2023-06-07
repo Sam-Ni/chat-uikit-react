@@ -1038,6 +1038,7 @@ ul li {
 }
 .conversation-preview-container .unread {
   margin-left: 10px;
+  text-align: left;
 }
 .conversation-preview-container .external {
   min-width: 90px;
