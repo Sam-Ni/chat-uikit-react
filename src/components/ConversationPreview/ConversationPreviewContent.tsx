@@ -79,6 +79,9 @@ export function unMemoConversationPreviewContent<T extends ConversationPreviewUI
         <div className="message">
           {displayMessage}
         </div>
+        <div>
+          {unread ? (<div className="unread">{unread <= 99 ? unread : '99+'}</div>) : (<div className="unread" />)}
+        </div>
       </div>
       <div className="external">
         {unread ? (<div className="unread">{unread <= 99 ? unread : '99+'}</div>) : (<div className="unread" />)}
