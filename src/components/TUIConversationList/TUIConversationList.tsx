@@ -31,6 +31,7 @@ interface Props {
   showSearch?: boolean,
   onlyGroupConversation?: boolean ,
   onlyC2CConversation?: boolean,
+  setCurrentConversation?: (Conversation)=>void,
 }
 
 export function UnMemoTUIConversationList<T extends Props>(props: T): React.ReactElement {
@@ -43,6 +44,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
     showSearch = true,
     onlyGroupConversation = false,
     onlyC2CConversation = false,
+    setCurrentConversation,
   } = props;
   const {
     tim, customClasses, conversation, setActiveConversation, setTUIProfileShow,
@@ -157,6 +159,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                           setActiveConversation,
                           Preview,
                           conversationUpdateCount,
+                          setCurrentConversation,
                         };
                         return (
                           <ConversationPreview key={item.conversationID} {...previewProps} />
@@ -172,6 +175,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                             setActiveConversation,
                             Preview,
                             conversationUpdateCount,
+                            setCurrentConversation,
                           };
                           return (
                             <ConversationPreview key={item.conversationID} {...previewProps} />
@@ -184,6 +188,7 @@ export function UnMemoTUIConversationList<T extends Props>(props: T): React.Reac
                         setActiveConversation,
                         Preview,
                         conversationUpdateCount,
+                        setCurrentConversation,
                       };
                       return (
                         <ConversationPreview key={item.conversationID} {...previewProps} />

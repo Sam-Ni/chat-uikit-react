@@ -15,6 +15,7 @@ interface Props {
     showSearch?: boolean;
     onlyGroupConversation?: boolean;
     onlyC2CConversation?: boolean;
+    setCurrentConversation?: (Conversation: any) => void;
 }
 declare function UnMemoTUIConversationList<T extends Props>(props: T): React.ReactElement;
 declare const TUIConversationList: React.MemoExoticComponent<typeof UnMemoTUIConversationList>;

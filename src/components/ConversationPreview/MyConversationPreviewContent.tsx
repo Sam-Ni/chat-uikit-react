@@ -1,13 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { ConversationPreviewUIComponentProps } from './ConversationPreview';
+import {ConversationPreviewProps, ConversationPreviewUIComponentProps} from './ConversationPreview';
 import { Avatar as DefaultAvatar } from '../Avatar/index';
 import './styles/index.scss';
 import { Icon, IconTypes } from '../Icon';
 import { Plugins } from '../Plugins';
 import { useConversation } from '../../hooks';
 import { useTUIKitContext } from '../../context';
+import {Conversation} from "tim-js-sdk";
 
-export function unMemoMyConversationPreviewContent<T extends ConversationPreviewUIComponentProps>(
+interface MyConversationPreviewUIComponentProps extends ConversationPreviewUIComponentProps {
+  setCurrentConversation? : (Conversation)=>void;
+}
+
+export function unMemoMyConversationPreviewContent<T extends MyConversationPreviewUIComponentProps>(
   props: T,
 ):React.ReactElement {
   const {
@@ -20,6 +25,7 @@ export function unMemoMyConversationPreviewContent<T extends ConversationPreview
     unread,
     active,
     setActiveConversation,
+    setCurrentConversation,
   } = props;
 
   const conversationPreviewButton = useRef<HTMLButtonElement | null>(null);
@@ -33,6 +39,9 @@ export function unMemoMyConversationPreviewContent<T extends ConversationPreview
     }
     if (conversationPreviewButton?.current) {
       conversationPreviewButton.current.blur();
+    }
+    if (setCurrentConversation) {
+      setCurrentConversation(conversation);
     }
   };
   const handleMouseEnter = () => {
