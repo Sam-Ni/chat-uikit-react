@@ -12,6 +12,7 @@ import { Avatar } from '../Avatar';
 import { getDisplayImage, getDisplayTitle } from '../ConversationPreview/utils';
 import { MESSAGE_OPERATE } from '../../constants';
 import { useHandleForwardMessage } from './hooks';
+import {TUIMessageList} from "../TUIMessageList";
 
 interface HandleForwardParams {
   list?:Array<Conversation>,
@@ -108,83 +109,84 @@ export function TUIForward <T extends TUIForwardToProps>(
           />
           <h2 className="tui-forward-title">Forward To</h2>
         </header>
-        <div className="tui-forward-search">
-          <Input
-            className="tui-forward-search-input"
-            placeholder="Search"
-            clearable
-            value={searchValue}
-            onChange={handleInputChange}
-            prefix={<Icon type={IconTypes.SEARCH} height={16} width={16} />}
-          />
-        </div>
+        {/*<div className="tui-forward-search">*/}
+        {/*  <Input*/}
+        {/*    className="tui-forward-search-input"*/}
+        {/*    placeholder="Search"*/}
+        {/*    clearable*/}
+        {/*    value={searchValue}*/}
+        {/*    onChange={handleInputChange}*/}
+        {/*    prefix={<Icon type={IconTypes.SEARCH} height={16} width={16} />}*/}
+        {/*  />*/}
+        {/*</div>*/}
         <main className="tui-forward-main">
-          {
-            searchValue && (
-            <ul className="tui-forward-list">
-              <h3 className="tui-forward-list-title">Search Result</h3>
-              {
-                searchResult.length > 0 && searchResult.map((item) => (
-                  <li key={item.conversationID} className="tui-forward-list-item">
-                    <label htmlFor={`${item.conversationID}`} className="info">
-                      <Avatar image={getDisplayImage(item)} size={40} />
-                      <div className="info-nick">{getDisplayTitle(item)}</div>
-                    </label>
-                    <Checkbox
-                      onChange={handleCheckboxChange}
-                      id={`${item.conversationID}`}
-                      value={item}
-                    />
-                  </li>
-                ))
-              }
-              {
-              searchResult.length === 0
-              && <p className="no-result">No Result</p>
-              }
-            </ul>
-            )
-          }
-          { !searchValue && FrequentlyList.length > 0 && (
-            <ul className="tui-forward-list">
-              <h3 className="tui-forward-list-title">Frequently Contacted Test</h3>
-              {
-                FrequentlyList.map((item) => (
-                  <li key={item.conversationID} className="tui-forward-list-item">
-                    <label htmlFor={`${item.conversationID}`} className="info">
-                      <Avatar image={getDisplayImage(item)} size={40} />
-                      <div className="info-nick">{getDisplayTitle(item)}</div>
-                    </label>
-                    <Checkbox
-                      onChange={handleCheckboxChange}
-                      id={`${item.conversationID}`}
-                      value={item}
-                    />
-                  </li>
-                ))
-              }
-            </ul>
-          )}
-          { !searchValue && RecentList.length > 0 && (
-          <ul className="tui-forward-list">
-            <h3 className="tui-forward-list-title">Recent Chats</h3>
-            {
-                RecentList.map((item) => (
-                  <li key={item.conversationID} className="tui-forward-list-item">
-                    <label htmlFor={`${item.conversationID}`} className="info">
-                      <Avatar image={getDisplayImage(item)} size={40} />
-                      <div className="info-nick">{getDisplayTitle(item)}</div>
-                    </label>
-                    <Checkbox
-                      onChange={handleCheckboxChange}
-                      id={`${item.conversationID}`}
-                      value={item}
-                    />
-                  </li>
-                ))
-              }
-          </ul>
-          )}
+          {/*{*/}
+          {/*  searchValue && (*/}
+          {/*  <ul className="tui-forward-list">*/}
+          {/*    <h3 className="tui-forward-list-title">Search Result</h3>*/}
+          {/*    {*/}
+          {/*      searchResult.length > 0 && searchResult.map((item) => (*/}
+          {/*        <li key={item.conversationID} className="tui-forward-list-item">*/}
+          {/*          <label htmlFor={`${item.conversationID}`} className="info">*/}
+          {/*            <Avatar image={getDisplayImage(item)} size={40} />*/}
+          {/*            <div className="info-nick">{getDisplayTitle(item)}</div>*/}
+          {/*          </label>*/}
+          {/*          <Checkbox*/}
+          {/*            onChange={handleCheckboxChange}*/}
+          {/*            id={`${item.conversationID}`}*/}
+          {/*            value={item}*/}
+          {/*          />*/}
+          {/*        </li>*/}
+          {/*      ))*/}
+          {/*    }*/}
+          {/*    {*/}
+          {/*    searchResult.length === 0*/}
+          {/*    && <p className="no-result">No Result</p>*/}
+          {/*    }*/}
+          {/*  </ul>*/}
+          {/*  )*/}
+          {/*}*/}
+          {/*{ !searchValue && FrequentlyList.length > 0 && (*/}
+          {/*  <ul className="tui-forward-list">*/}
+          {/*    <h3 className="tui-forward-list-title">Frequently Contacted Test</h3>*/}
+          {/*    {*/}
+          {/*      FrequentlyList.map((item) => (*/}
+          {/*        <li key={item.conversationID} className="tui-forward-list-item">*/}
+          {/*          <label htmlFor={`${item.conversationID}`} className="info">*/}
+          {/*            <Avatar image={getDisplayImage(item)} size={40} />*/}
+          {/*            <div className="info-nick">{getDisplayTitle(item)}</div>*/}
+          {/*          </label>*/}
+          {/*          <Checkbox*/}
+          {/*            onChange={handleCheckboxChange}*/}
+          {/*            id={`${item.conversationID}`}*/}
+          {/*            value={item}*/}
+          {/*          />*/}
+          {/*        </li>*/}
+          {/*      ))*/}
+          {/*    }*/}
+          {/*  </ul>*/}
+          {/*)}*/}
+          {/*{ !searchValue && RecentList.length > 0 && (*/}
+          {/*<ul className="tui-forward-list">*/}
+          {/*  <h3 className="tui-forward-list-title">Recent Chats</h3>*/}
+          {/*  {*/}
+          {/*      RecentList.map((item) => (*/}
+          {/*        <li key={item.conversationID} className="tui-forward-list-item">*/}
+          {/*          <label htmlFor={`${item.conversationID}`} className="info">*/}
+          {/*            <Avatar image={getDisplayImage(item)} size={40} />*/}
+          {/*            <div className="info-nick">{getDisplayTitle(item)}</div>*/}
+          {/*          </label>*/}
+          {/*          <Checkbox*/}
+          {/*            onChange={handleCheckboxChange}*/}
+          {/*            id={`${item.conversationID}`}*/}
+          {/*            value={item}*/}
+          {/*          />*/}
+          {/*        </li>*/}
+          {/*      ))*/}
+          {/*    }*/}
+          {/*</ul>*/}
+          {/*)}*/}
+          <TUIMessageList messageList={message.payload.messageList} />
         </main>
         <footer className="tui-forward-footer">
           <div className="tui-forward-footer-name">{selectList.length > 0 && handleDisplayForwardName(selectList)}</div>
