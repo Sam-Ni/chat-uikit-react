@@ -1,7 +1,7 @@
 import React, {
   PropsWithChildren, useCallback, useEffect, useState,
 } from 'react';
-import { Conversation, Message } from 'tim-js-sdk';
+import TIM, { Conversation, Message } from 'tim-js-sdk';
 import { useTUIChatActionContext } from '../../context';
 import './styles/index.scss';
 import { Model } from '../Model';
@@ -38,7 +38,9 @@ export function TUIForward <T extends TUIForwardToProps>(
   const { message, sendForwardMessage, conversationList = [] } = useHandleForwardMessage();
 
   console.log('TUIForward', message);
-  console.log('TUIMessageList', message.payload.messageList);
+  if (message.type === TIM.TYPES.MSG_MERGER) {
+    console.log('TUIMessageList', message.payload.messageList);
+  }
 
   const handleClose = useCallback((e) => {
     operateMessage({
