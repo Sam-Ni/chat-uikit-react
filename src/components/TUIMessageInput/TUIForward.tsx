@@ -189,6 +189,7 @@ export function TUIForward <T extends TUIForwardToProps>(
           <button type="button" className="button" onClick={() => { handleForward(selectList); }} disabled={selectList.length === 0}>Forward</button>
         </footer>
       </div>
+      <div>Test</div>
     </Model>
   );
 }
