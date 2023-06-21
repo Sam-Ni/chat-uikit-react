@@ -36,6 +36,8 @@ export function TUIForward <T extends TUIForwardToProps>(
 
   const { message, sendForwardMessage, conversationList = [] } = useHandleForwardMessage();
 
+  console.log('TUIForward', message);
+
   const handleClose = useCallback((e) => {
     operateMessage({
       [MESSAGE_OPERATE.FORWARD]: null,
