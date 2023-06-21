@@ -38,7 +38,7 @@ export function TUIForward <T extends TUIForwardToProps>(
   const { message, sendForwardMessage, conversationList = [] } = useHandleForwardMessage();
 
   console.log('TUIForward', message);
-  if (message.type === TIM.TYPES.MSG_MERGER) {
+  if (message && message.type === TIM.TYPES.MSG_MERGER) {
     console.log('TUIMessageList', message.payload.messageList);
   }
 
