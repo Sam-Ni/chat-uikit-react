@@ -189,7 +189,14 @@ export function TUIForward <T extends TUIForwardToProps>(
           {/*    }*/}
           {/*</ul>*/}
           {/*)}*/}
-          <TUIMessageList messageList={message.payload.messageList} />
+          {/*<TUIMessageList messageList={message.payload.messageList} />*/}
+          {message.payload.messageList.map(e=> {
+            return (
+              <div>
+                <span>{e.from}</span>: <span>{e.messageBody[0].payload.text}</span>
+              </div>
+            )
+          })}
         </main>
         <footer className="tui-forward-footer">
           <div className="tui-forward-footer-name">{selectList.length > 0 && handleDisplayForwardName(selectList)}</div>
