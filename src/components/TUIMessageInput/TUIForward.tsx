@@ -145,7 +145,7 @@ export function TUIForward <T extends TUIForwardToProps>(
           }
           { !searchValue && FrequentlyList.length > 0 && (
             <ul className="tui-forward-list">
-              <h3 className="tui-forward-list-title">Frequently Contacted</h3>
+              <h3 className="tui-forward-list-title">Frequently Contacted Test</h3>
               {
                 FrequentlyList.map((item) => (
                   <li key={item.conversationID} className="tui-forward-list-item">
